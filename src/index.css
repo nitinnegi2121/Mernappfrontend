@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #6a11cb;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+
+.form-outline .form-control.form-control-lg:focus~.form-label, .form-outline .form-control.active~.form-label {
+  transform: translateY(-1.25rem) translateY(0.1rem) scale(.8);
+}
+
+.form-outline .form-control.form-control-lg~.form-label {
+  padding-top: 0.7rem;
+}
+.form-outline.form-white .form-control {
+  color: #fff;
+}
+.form-outline.form-white .form-control:focus~.form-label {
+    color: #fff;
+    background-color: #212529;
+    padding: 6px;
+}
+
+.form-outline.form-white .form-control~.form-label {
+  color: #fbfbfb;
+}
+
+.form-outline .form-control.form-control-lg~.form-label {
+  padding-top: 0.7rem;
+}
+
+.form-outline {
+  position: relative;
+}
+
+.form-outline .form-control~.form-label {
+  position: absolute;
+  top: 0;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  left: 0.75rem;
+  padding-top: 0.37rem;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transition: all .2s ease-out;
+  color: rgba(0,0,0,.6);
+  margin-bottom: 0;
+}
