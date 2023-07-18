@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 const Contact = () => {
-  const [userData, setUserData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [userData, setUserData] = useState({ name: '', email: '', phone: '', message: '' });
 
   const userContact = async () => {
     try {
@@ -36,34 +36,33 @@ const Contact = () => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  //send data to backend
-  
-
-  const contactForm = async(e) =>{
+  const contactForm = async (e) => {
     e.preventDefault();
-    
-    const{name, email, phone, message} = userData;
 
-    const res =  await fetch('/contact', {
-      method: "POST",
-      headers: {
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-        name, email, phone, message
-      })
-    });
+    const { name, email, phone, message } = userData;
 
-    const data =  await res.json();
+    try {
+      const res = await fetch('/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, phone, message })
+      });
 
-   if(!data){
-    console.log("message not send")
-   }else{
-    alert("message send");
-    setUserData({...userData, message:""});
-   }
+      const data = await res.json();
 
-  }
+      if (res.status === 201) {
+        alert('Message sent');
+        setUserData({ ...userData, message: '' });
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (err) {
+      console.log(err);
+      alert('Failed to send message');
+    }
+  };
 
   return (
     <>
@@ -127,7 +126,7 @@ const Contact = () => {
                   </div>
 
                   <div className="contact_form_button">
-                    <button type="submit" className="button contact_submit_button" onClick={contactForm}>
+                    <button type="submit" className="button contact_submit_button">
                       Send Message
                     </button>
                   </div>
@@ -139,6 +138,6 @@ const Contact = () => {
       </div>
     </>
   );
-};
+}
 
 export default Contact;
